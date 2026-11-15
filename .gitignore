@@ -1,0 +1,22 @@
+# 패키지 폴더 (npm install로 언제든 다시 받을 수 있음)
+node_modules/
+
+# 🛡️ 비밀값 (DB 비밀번호, JWT 비밀키 등)
+.env
+.env.*
+!.env.example
+
+# 빌드 결과물
+dist/
+build/
+
+# 로그 / 백업
+*.log
+*.dump
+backups/
+
+# OS / 에디터
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
