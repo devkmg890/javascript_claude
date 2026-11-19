@@ -12,7 +12,7 @@
 | npm | ✅ 11.6.2 |
 | Git | ✅ 2.53.0, 이름·이메일 설정됨 |
 | VS Code | ✅ 설치됨 |
-| PostgreSQL | ❌ 미설치 → **Step 4에서 설치** |
+| PostgreSQL | ❌ 미설치 → **Step 4에서 설치** → ✅ 19.0 설치·접속 확인 (2026-11-19) |
 
 ---
 
@@ -195,11 +195,44 @@ psql -U postgres -c "SELECT version();"
 
 ---
 
-## Step 5. 마무리
+## Step 5. GitHub 비공개 저장소에 올리기 (2026-11-19 결정: 비공개)
 
-- [ ] 🤝 GitHub 원격 저장소 사용 여부 Claude와 상의
+> **GitHub**: Git 저장소를 인터넷에 보관하는 서비스. PC가 고장나도 코드가 남고, 다른 기기에서도 볼 수 있습니다.
+> **원격 저장소(Remote)**: 인터넷(GitHub)에 있는 저장소. 내 PC의 저장소는 **로컬 저장소**라고 합니다.
+> **origin**: 원격 저장소에 붙이는 **기본 별명**입니다.
+> **push / pull**: 로컬 → 원격으로 **올리기** / 원격 → 로컬로 **내려받기**.
+
+### 5-1. GitHub에서 저장소 만들기 (브라우저에서 직접)
+1. `https://github.com` 로그인 (계정이 없으면 가입 — 가입은 직접 진행)
+2. 오른쪽 위 `+` → **New repository**
+3. 설정
+   - Repository name: `javascript_claude` (원하는 이름 가능)
+   - **Private** 선택 🛡️
+   - ⚠️ "Add a README", ".gitignore", "license" 는 **모두 체크하지 않기** (이미 로컬에 있어서 충돌 남)
+4. **Create repository** 클릭 → 나오는 주소(`https://github.com/<아이디>/javascript_claude.git`) 복사
+
+### 5-2. 로컬 저장소와 연결하고 올리기
+```powershell
+git remote add origin https://github.com/<아이디>/javascript_claude.git
+git remote -v
+git push -u origin main
+```
+- 처음 push할 때 **브라우저 로그인 창**이 뜹니다(Git Credential Manager). GitHub에 로그인해서 승인하면 됩니다.
+- `-u`는 "앞으로 이 브랜치는 origin의 main과 짝"이라는 설정이라, 다음부터는 `git push`만 쳐도 됩니다.
+- GitHub 저장소 페이지를 새로고침해서 파일들이 보이면 성공!
+
+> 🛡️ **올리기 전에 항상 확인**: `git status`로 `.env` 같은 비밀 파일이 목록에 없는지 봅니다. 비공개 저장소라도 비밀값은 올리지 않습니다.
+
+- [ ] Step 5 완료: GitHub 저장소 페이지에 파일이 보인다
+
+---
+
+## Step 6. 마무리
+
 - [ ] `PROGRESS.md` 갱신 (Claude가 함께 해줌)
-- [ ] 커밋: `git add .` → `git commit -m "docs: Phase 0 완료"`
+- [ ] 커밋 & 올리기: `git add .` → `git commit -m "docs: Phase 0 완료"` → `git push`
+
+> 💡 `nothing to commit, working tree clean`이 나오면 **마지막 커밋 이후 바뀐 파일이 없다**는 뜻입니다. 오류가 아니에요.
 
 ### ✅ Phase 0 완료 조건
 - 터미널에서 `node -v`, `git --version`, `psql --version`이 모두 나온다

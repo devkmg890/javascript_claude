@@ -4,13 +4,15 @@
 > 한 단계를 마칠 때마다 이 파일을 갱신합니다.
 
 ## 📍 현재 위치
-- **Phase 0. 개발 환경 준비** — 진행 중 (가이드: `docs/phases/phase0_개발환경.md`)
-- 사전 점검: Node v24 / Git(이름·이메일 설정됨) / VS Code 설치됨 / PostgreSQL 미설치
-- 마지막 업데이트: 2026-11-14
+- **Phase 0. 개발 환경 준비** — 거의 완료 (가이드: `docs/phases/phase0_개발환경.md`)
+  - ✅ Step 1~4: 터미널, VS Code 확장, git init·.gitignore·첫 커밋(`9c61479`), PostgreSQL 19.0 설치·psql/pgAdmin 접속 확인
+  - ⏳ Step 5: GitHub 비공개 저장소 연결 & push
+- 마지막 업데이트: 2026-11-19
 
 ## ▶️ 다음 할 일
-1. Phase 0 가이드 Step 1(터미널) → Step 2(확장) → Step 3(git init, .gitignore, 첫 커밋) → Step 4(PostgreSQL 설치)
-2. Step 5에서 GitHub 원격 저장소 사용 여부 상의
+1. Phase 0 Step 5: GitHub 비공개 저장소 만들고 `git push -u origin main`
+2. Step 6: `docs: Phase 0 완료` 커밋 & push
+3. Phase 1 시작: **ERP 모듈 선정** 상의부터
 
 ## ✅ Phase 체크리스트
 - [ ] Phase 0. 개발 환경 준비
@@ -40,9 +42,11 @@
 | 2026-11-14 | 운영 시 **클라우드 서버 3대**(웹/게이트웨이 · 애플리케이션 · DB)로 물리 분리, **무료 범위 안에서** | 사용자 요청 — 장애 격리·보안 분리 경험. 사용자 PC: RAM 16GB, i5 4코어 (로컬 VM도 대안으로 가능) |
 | 2026-11-14 | 서버 분리는 **설계는 Phase 2부터, 적용은 Phase 11** | 개발은 내 PC에서 하고 앱 완성 후 옮겨야 문제 원인 구분이 쉬움 |
 | 2026-11-14 | 장애 대비 범위: **백업·복구 + 장애 격리 훈련** (이중화는 개념만) | 초보자에게 현실적인 범위 |
+| 2026-11-19 | PostgreSQL **19.0** 설치 (포트 5432) | 설치 시점 최신 버전, 구버전 Windows에서도 정상 설치됨 |
+| 2026-11-19 | GitHub **비공개(Private)** 원격 저장소 사용 | 코드 백업 + 다른 기기 열람. 비공개라도 비밀값은 올리지 않음 |
 
 ## 🤝 아직 상의할 항목 (해당 Phase에서 결정)
-- [ ] (Phase 0) GitHub 원격 저장소 사용 여부
+- [x] (Phase 0) GitHub 원격 저장소 사용 여부 → 비공개로 사용
 - [ ] (Phase 1) ERP 모듈 선정
 - [ ] (Phase 2) 다이어그램 도구 / 순수 SQL vs ORM
 - [ ] (Phase 2) auth-service(IAM)를 별도 서버로 분리할지
